@@ -1,184 +1,26 @@
 ![image](https://github.com/MathisCastell/Calculatrice/assets/148212506/c85a031a-bdef-49e3-b712-bb97f4d6c54d)
 
-from tkinter import *
 
+Classe Calculator:
 
-class Calculator():
-    def __init__(self):
-        self.phase1 = 0
-        self.phase2 = 0
-        self.final = 0
-        self.entry = StringVar()
-        self.text = ""
-        self.signe = ""
+La classe Calculator est définie pour représenter la calculatrice.
+Le constructeur __init__ initialise les variables nécessaires pour effectuer les calculs (phase1, phase2, final, entry, text, signe).
+La méthode init réinitialise les variables de la calculatrice.
+afficher_Nb met à jour la valeur affichée à l'écran avec le contenu de text.
+La méthode operation examine l'opération à effectuer (+, -, *, /) en fonction du contenu de text et appelle la méthode appropriée.
+Les méthodes Plus, Sous, Div, et Mult effectuent les opérations correspondantes et mettent à jour l'affichage.
+Fonctions Button1 à ButtonE:
 
-    def init(self):
-        self.phase1 = 0
-        self.phase2 = 0
-        self.final = 0
-        self.text = ""
-        self.signe = ""
+Ces fonctions sont utilisées comme gestionnaires d'événements pour les boutons numériques (de 0 à 9), le point décimal, et les opérations arithmétiques (+, -, *, /, =).
+Elles modifient le texte (calculatrice.text) en conséquence et mettent à jour l'affichage.
+Fenêtre Tkinter:
 
-    def afficher_Nb(self):
-        self.entry.set(self.text)
+Une fenêtre Tkinter (fen) est créée avec une taille de 200x240 pixels, un titre "Calculatrice v1.0", une couleur de fond "SkyBlue2", et un relief "raised".
+Un objet Calculator (calculatrice) est créé.
+Un widget Entry (ECRAN) est utilisé pour afficher le texte de la calculatrice.
+Des boutons numériques, opérations, et autres commandes sont créés à l'aide de la classe Button de Tkinter. Chaque bouton est associé à une fonction spécifique définie précédemment.
+Les boutons sont disposés à l'aide de la méthode place.
+Boucle principale (fen.mainloop()):
 
-    def operation(self):
-        try:
-            if "+" in self.text:
-                self.Plus()
-            elif "-" in self.text:
-                self.Sous()
-            elif "/" in self.text:
-                self.Div()
-            elif "X" in self.text:
-                self.Mult()
-        except:
-            self.entry.set("ERROR")
-            self.init()
-
-    def Plus(self):
-        nb = self.text.split("+")
-        self.phase1 = float(nb[0])
-        self.phase2 = float(nb[1])
-        self.final = self.phase1 + self.phase2
-        self.entry.set(str(self.final))
-        self.init()
-
-    def Sous(self):
-        nb = self.text.split("-")
-        self.phase1 = float(nb[0])
-        self.phase2 = float(nb[1])
-        self.final = self.phase1 - self.phase2
-        self.entry.set(str(self.final))
-        self.init()
-
-    def Div(self):
-        nb = self.text.split("/")
-        self.phase1 = float(nb[0])
-        self.phase2 = float(nb[1])
-        self.final = self.phase1 / self.phase2
-        self.entry.set(str(self.final))
-        self.init()
-
-    def Mult(self):
-        nb = self.text.split("X")
-        self.phase1 = float(nb[0])
-        self.phase2 = float(nb[1])
-        self.final = self.phase1 * self.phase2
-        self.entry.set(str(self.final))
-        self.init()
-
-
-def Button1():
-    calculatrice.text += "1"
-    calculatrice.entry.set(calculatrice.text)
-
-
-def Button2():
-    calculatrice.text += "2"
-    calculatrice.entry.set(calculatrice.text)
-
-
-def Button3():
-    calculatrice.text += "3"
-    calculatrice.entry.set(calculatrice.text)
-
-
-def Button4():
-    calculatrice.text += "4"
-    calculatrice.entry.set(calculatrice.text)
-
-
-def Button5():
-    calculatrice.text += "5"
-    calculatrice.entry.set(calculatrice.text)
-
-
-def Button6():
-    calculatrice.text += "6"
-    calculatrice.entry.set(calculatrice.text)
-
-
-def Button7():
-    calculatrice.text += "7"
-    calculatrice.entry.set(calculatrice.text)
-
-
-def Button8():
-    calculatrice.text += "8"
-    calculatrice.entry.set(calculatrice.text)
-
-
-def Button9():
-    calculatrice.text += "9"
-    calculatrice.entry.set(calculatrice.text)
-
-
-def Button0():
-    calculatrice.text += "0"
-    calculatrice.entry.set(calculatrice.text)
-
-
-def ButtonF():
-    calculatrice.text += "."
-    calculatrice.entry.set(calculatrice.text)
-
-
-def ButtonP():
-    calculatrice.text += "+"
-    calculatrice.entry.set(calculatrice.text)
-
-
-def ButtonS():
-    calculatrice.text += "-"
-    calculatrice.entry.set(calculatrice.text)
-
-
-def ButtonD():
-    calculatrice.text += "/"
-    calculatrice.entry.set(calculatrice.text)
-
-
-def ButtonM():
-    calculatrice.text += "X"
-    calculatrice.entry.set(calculatrice.text)
-
-
-def ButtonE():
-    calculatrice.operation()
-
-
-def ButtonC():
-    calculatrice.entry.set("")
-    calculatrice.init()
-
-
-fen = Tk()
-fen.geometry("200x240")
-fen.title("Calculatrice v1.0")
-fen["bg"] = "SkyBlue2"
-fen["relief"] = "raised"
-
-calculatrice = Calculator()
-
-ECRAN = Entry(fen, width=28, textvariable=calculatrice.entry, bg="black", fg="white", relief=SUNKEN, bd=5).place(x=9, y=8)
-
-B1 = Button(fen, text="1", command=Button1, width=3, height=2, bg="grey", fg="white").place(x=10, y=40)
-B2 = Button(fen, text="2", command=Button2, width=3, height=2, bg="grey", fg="white").place(x=50, y=40)
-B3 = Button(fen, text="3", command=Button3, width=3, height=2, bg="grey", fg="white").place(x=90, y=40)
-B4 = Button(fen, text="4", command=Button4, width=3, height=2, bg="grey", fg="white").place(x=10, y=90)
-B5 = Button(fen, text="5", command=Button5, width=3, height=2, bg="grey", fg="white").place(x=50, y=90)
-B6 = Button(fen, text="6", command=Button6, width=3, height=2, bg="grey", fg="white").place(x=90, y=90)
-B7 = Button(fen, text="7", command=Button7, width=3, height=2, bg="grey", fg="white").place(x=10, y=140)
-B8 = Button(fen, text="8", command=Button8, width=3, height=2, bg="grey", fg="white").place(x=50, y=140)
-B9 = Button(fen, text="9", command=Button9, width=3, height=2, bg="grey", fg="white").place(x=90, y=140)
-BC = Button(fen, text="C", command=ButtonC, width=3, height=2, bg="gold", fg="red", relief=RIDGE).place(x=10, y=190)
-B0 = Button(fen, text="0", command=Button0, width=3, height=2, bg="grey", fg="white").place(x=50, y=190)
-BF = Button(fen, text=".", command=ButtonF, width=3, height=2, bg="grey", fg="white").place(x=90, y=190)
-BP = Button(fen, text="+", command=ButtonP, width=4, height=2, bg="gold", fg="black", relief=GROOVE).place(x=150, y=40)
-BS = Button(fen, text="-", command=ButtonS, width=4, height=2, bg="gold", fg="black", relief=GROOVE).place(x=150, y=80)
-BD = Button(fen, text="/", command=ButtonD, width=4, height=2, bg="gold", fg="black", relief=GROOVE).place(x=150, y=120)
-BM = Button(fen, text="X", command=ButtonM, width=4, height=2, bg="gold", fg="black", relief=GROOVE).place(x=150, y=160)
-BE = Button(fen, text="=", command=ButtonE, width=4, height=1, bg="blue", fg="white", relief=RIDGE).place(x=150, y=205)
-
-fen.mainloop()
+La boucle principale de Tkinter est utilisée pour surveiller les événements et maintenir l'interface utilisateur active.
+Lorsque vous exécutez ce script, une petite interface graphique de calculatrice apparaît, et vous pouvez effectuer des opérations en cliquant sur les boutons. La classe Calculator gère la logique des calculs et met à jour l'interface utilisateur en conséquence. Les fonctions Button1 à ButtonE sont liées aux boutons pour réagir aux événements de clic.
