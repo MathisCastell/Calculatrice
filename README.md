@@ -1,3 +1,5 @@
+![image](https://github.com/MathisCastell/Calculatrice/assets/148212506/c85a031a-bdef-49e3-b712-bb97f4d6c54d)
+
 from tkinter import *
 
 
