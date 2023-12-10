@@ -66,10 +66,6 @@ class Calculator():
         self.final = self.phase1 * self.phase2
         self.entry.set(str(self.final))
         self.init()
-    
-#------------
-# FONCTIONS :
-#------------
 def Button1 (): # Actionnerle bouton 1
     calculatrice.text += "1"
     calculatrice.entry.set(calculatrice.text)
